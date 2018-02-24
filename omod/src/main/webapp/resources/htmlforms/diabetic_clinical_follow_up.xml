@@ -39,11 +39,22 @@
             }
             jq('#recent-calculated-bmi').html(bmi.toFixed(2));
         }
+
+        function onNHIFStatusChange() {
+            var display = '';
+            var nhif = getValue('nhif.value');            
+            if (nhif==1066)  {                
+                    display = 'Encourage patient to enroll';
+            }            
+            jq('#nhif-comment').html(display);
+          }
+          
         jQuery(function() {
             getField('weight.value').change(onWeightOrHeightChange);
             getField('height.value').change(onWeightOrHeightChange);
             onWeightOrHeightChange();
             displayRecentBmi();
+            jq('#nhif').change(onNHIFStatusChange);
         });
     </script>
 
@@ -99,44 +110,47 @@
                         <td>                        
                         <label>DM Diagnosis </label>
                         <obs conceptId="165086" answerConceptIds="165087,165088" answerLabels="New DM patient,Known DM patient" style="radio"
-                                 answerSeparator=""/>                                               
+                                 answerSeparator="" id="diabetes-status"/>                                               
                         </td>
 
                         <td>
                             <label>Date of DM Diagnosis </label>
-                            <obs conceptId="165089"/>                   
+                            <obs conceptId="165089" id="dm-diagnosis-date"/>                   
                         </td>
 
                         <td>
                             <label>Date of starting clinic</label>
-                            <obs conceptId="fbf22987-bdf7-4721-81ce-6b71e1630c5d" />
+                            <obs conceptId="fbf22987-bdf7-4721-81ce-6b71e1630c5d" id="dm-clinic-start-date"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Hypertension:</label>
                             <obs conceptId="165091" answerConceptIds="165092,165093" answerLabels="New HTN patient,Known HTN patient" style="radio"
-                                 answerSeparator=""/>
+                                 answerSeparator="" id="htn-status"/>
                         </td>
                         <td>
                             <label>Date of HTN Diagnosis </label>
-                            <obs conceptId="165090"/>
+                            <obs conceptId="165090" id="htn-diagnosis-date"/>
                         </td>
 
                         <td>
                             <label>Date of starting clinic</label>
-                           <obs conceptId="504f853e-1f81-478d-a043-711ac528322d" />
+                           <obs conceptId="504f853e-1f81-478d-a043-711ac528322d" id="htn-clinic-start-date" />
                         </td>
                     </tr>
                      <tr>
-                        <td>
+                        <td colspan="3">
                             <label>Patient covered by NHIF:</label>
                             <obs conceptId="1917" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"
-                                 answerSeparator=""/>
+                                 answerSeparator="" id="nhif"/>
                         </td>
-                         <td colspan="2">
-                             <label>Encourage enrollment</label>
-                         </td>
+                      </tr>
+
+                     <tr>
+                        <td colspan="3">
+                            <span id="nhif-comment" class="value"></span>                  
+                        </td>
                     </tr>
                     <tr>
                         <td>

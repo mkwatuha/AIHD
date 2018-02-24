@@ -15,6 +15,7 @@
 
     </style>
     <script type="text/javascript">
+         var lmpField=getField('lmp');
         function onWeightOrHeightChange() {
             var display = '';
             var weightKg = parseFloat(getValue('weight.value'));
@@ -40,12 +41,23 @@
             }            
             jq('#nhif-comment').html(display);
           }
+
+			var disableForMalePatients = function() {
+				var patientGender = '<lookup expression="patient.person.gender"/>';				
+
+				if (patientGender=='M') {
+					fieldHelper.disable(lmpField);
+				} else {
+					fieldHelper.enable(lmpField);		
+				}
+			};
           
         jQuery(function() {
             getField('weight.value').change(onWeightOrHeightChange);
             getField('height.value').change(onWeightOrHeightChange);
             onWeightOrHeightChange();
             jq('#nhif').change(onNHIFStatusChange);
+            disableForMalePatients();
         });
 
            
@@ -99,15 +111,13 @@
                         </td>
 
                         <td>
-                           
-                            <label>New DM patient</label> 
                             <obs conceptId="165086" answerConceptIds="165087,165088" answerLabels="New DM patient,Known DM patient" style="radio"
-                                 answerSeparator=""/>                       
+                                 answerSeparator="" id="diabetes_status"/>                       
                         </td>
 
                         <td>
                             <label>Year of Diagnosis</label>
-                            <obs conceptId="165089" id="yeard"/>                        
+                            <obs conceptId="165089" id="dm_diagnosis_year"/>                        
                         </td>
                     </tr>
                     <tr>
@@ -121,7 +131,7 @@
             
                         <td>
                             <label>Year of Diagnosis</label>
-                            <obs conceptId="165090"/>                        
+                            <obs conceptId="165090" id="htn_diagnosis_year"/>                        
                         </td>
                     </tr>
 
@@ -129,12 +139,12 @@
                         <td>
                             <label>HIV status:</label> 
                             <obs conceptId="138405" answerConceptIds="664,138571,1067" answerLabels="HIV -ve,HIV +ve,Unknown" style="radio"
-                                 answerSeparator=""/>
+                                 answerSeparator="" id="hiv_status"/>
                         </td>
                         <td colspan="2">
                             <label>Enrolled to care:</label>
                             <obs conceptId="159811" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"
-                                 answerSeparator=""/>                        
+                                 answerSeparator="" id="enrolled_to_hiv_care"/>                        
                         </td>
                      </tr>
 
@@ -154,7 +164,7 @@
                       </tr>
 
                      <tr>
-                        <td colspan="3" id="enrollToNhif">
+                        <td colspan="3">
                             <span id="nhif-comment" class="value"></span>                  
                         </td>
                     </tr>
@@ -163,7 +173,7 @@
                         <td colspan="3">
                             <label>Is patient a referral?</label>
                                  <obs conceptId="1648" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio"
-                                 answerSeparator=""/> 
+                                 answerSeparator="" id="patient-a-referral"/> 
                                                   
                         </td>
                       </tr>
@@ -171,25 +181,25 @@
                         <td colspan="3">
                         <label>If Yes, specify referring facility: **In patient=(160551), OPD add 160542, Casualty ,Other</label> 
                                  <obs conceptId="164408" answerConceptIds="1759,165107,160551,160542,160473,5622" answerLabels="CHW ,Dispensary, In patient, OPD, Casualty ,Other" style="radio"
-                                 answerSeparator=""/>                                                   
+                                 answerSeparator="" id="patient-referral-by"/>                                                   
                         </td>
                        </tr>
                        <tr>
                         <td colspan="3">
                           <label>Referring facility</label>
-                                 <obs conceptId="161550"/>                                                   
+                                 <obs conceptId="161550" id="patient-referral-by-facility"/>                                                   
                         </td>
                        </tr> 
                        <tr>
                         <td colspan="3">
                           <label>Referring patient</label>
-                                 <obs conceptId="161103"/>                                                   
+                                 <obs conceptId="161103" id="patient-referral-by-patient"/>                                                   
                         </td>
                        </tr>
                        <tr>
                         <td colspan="3">
                           <label>Other</label>
-                                 <obs conceptId="164359"/>                                                   
+                                 <obs conceptId="164359" id="patient-referral-by-other"/>                                                   
                         </td>
                        </tr>
                 </tbody>
@@ -226,7 +236,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <obs conceptId="1427"/> 
+                            <obs conceptId="1427" id="lmp"/> 
                         </td>
                     </tr>
                 </tbody>
@@ -242,14 +252,14 @@
                         <td>
                             <label>Do you smoke cigarettes?</label>
                             <obs conceptId="152722" answerConceptIds="1065,1066,158939" answerLabels="Yes,No,Stopped" style="radio"
-                                 answerSeparator=""/>                       
+                                 answerSeparator="" id="smoke-cigarettes"/>                       
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Do you sometimes drink alcohol?</label>
                             <obs conceptId="159449" answerConceptIds="159450,1090,159452" answerLabels="Yes,No,Stopped" style="radio"
-                                 answerSeparator=""/>                       
+                                 answerSeparator="" id="drink-alcohol"/>                       
                         </td>
                     </tr>
                 </tbody>
@@ -279,7 +289,7 @@
                             <td><obs conceptId="159460" answerConceptId="79074" answerLabel="Losartan"  style="checkbox"/></td>
                             <td><obs conceptId="159460" answerConceptId="80637" answerLabel="Nifedipine"  style="checkbox"/></td>
                             <td><obs conceptId="159460" answerConceptId="71652" answerLabel="Atenolol"  style="checkbox"/></td>
-                            <td><obs conceptId="159460" answerConceptId="5622" answerLabel="Other"  style="checkbox"/></td>
+                            <td><obs conceptId="159460" answerConceptId="5622" answerLabel="Other"  style="checkbox" id="other-medication"/></td>
                        </tr> 
   
                     </table>
@@ -288,16 +298,16 @@
                     <tr>
                         <td colspan="2">
                             <label>Other medication **</label>
-                            <obs conceptId="160632"/>                       
+                            <obs conceptId="160632" id="show-other-medication"/>                       
                         </td>
                     </tr>                
                     <tr>
                         <td>
                             <label>Adhering to current medications?  </label>
                             <obs conceptId="165108" answerConceptIds="1065,1066,1175" answerLabels="Yes,No,N/A" style="radio"
-                                 answerSeparator=""/>                       
+                                 answerSeparator="" id="adhering-to-current-medications"/>                       
                         </td>
-                        <td><label>Specify reason</label><obs conceptId="165109"/></td>
+                        <td><label>Specify reason</label><obs conceptId="165109" id="not-adhering-medications-reasons"/></td>
                     </tr>
                 </tbody>
             </table>
