@@ -189,7 +189,9 @@
 
         function displayRecentDiabeticStatus(){
             var lastObs = "<lookup expression="fn.latestObs(165086).valueCoded"/>";            
+
             var sectionId = 'diabetes_status';            
+
             if(lastObs){
              lastObs = lastObs.trim().split('#')[1];
              selectElementByValue(sectionId,lastObs);
@@ -232,6 +234,7 @@
         }
         function diabeteStatus(){
             var val= getValue('diabetes_status.value');
+
             jq('#dm_diagnosis_date :input').prop('disabled', true);
             jq('#dm_treatment_start_date :input').prop('disabled', true);
             if(val == 165088){
@@ -309,7 +312,6 @@
                     jq('#' + display).last().removeClass("green_flag");
                     jq('#' + display).last().removeClass("red_flag");
                     jq('#' + display).last().removeClass("yellow_flag");
-
         }
         function bpFlag(diastolic,systolic,display){
             var isNormal = false;
@@ -647,6 +649,7 @@
                      </tr>
                     <tr>
                         <td><obs id="sweat" conceptId="159800" answerConceptId="133027" answerLabel="Night sweats"   style="checkbox" class="align-checkbox-input" showCommentField="true" commentFieldLabel="&lt;/td&gt;&lt;td&gt;" /></td>
+
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -955,7 +958,7 @@
                         <td colspan="2">Clinician Name:<obs conceptId="1473"/></td>
                     </tr>
                 </tbody>
-            </table>  
+            </table> 
    
 
         <ifMode mode="VIEW" include="false">
