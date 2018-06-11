@@ -51,4 +51,20 @@ public class EncounterTypes {
             return "d67972c4-75f5-11e8-9e72-9738ea3173f2";
         }
     };
+    
+    public static EncounterTypeDescriptor ADMISSION_ENCOUNTER_TYPE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Admit patient";
+        }
+
+        @Override
+        public String description() {
+            return "Admit patient into this facility";
+        }
+
+        public String uuid() {
+            return "e22e39fd-7db2-45e7-80f1-60fa0d5a4378";
+        }
+    };
 }

@@ -121,7 +121,7 @@
             padding-left:10px;
         }
         .flagRed  {
-            color: blue;
+            color: red;
             font-weight: bold;
             font-size: 15px;
         }
@@ -145,17 +145,15 @@
             overflow: auto;
             padding: 5px;
 
-        }
 
+        }
         .educationFlags {
            margin-top: 5px;
            padding-left: 25px;
-        }
-
-        
+        }       
 
  
-            </style>
+        </style>
     <script type="text/javascript">
        var checkedRequired =false;
         function onWeightOrHeightChange() {
@@ -1161,7 +1159,6 @@
 
         beforeSubmit.push(function() {
             // check unfilled required fields and prevent submission
-
             var val = showRequiredFields();
             if (val === true) {
                 addRequiredChecksOnChange();
@@ -1173,6 +1170,7 @@
              if(invalidMeds === true){
                return false;
              }           
+
 
             return true;
         });          
@@ -1186,7 +1184,6 @@
    <div style="display:none">
       <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
    </div>
-   
    <div id="tab-wrap">
       <div id="tabs">
          <ul>
@@ -2339,7 +2336,7 @@
                   <tbody>
                      <tr>
                         <td> 
-                           <obs conceptId="1379" id="nutrition_opt" answerConceptId="1380" answerLabel="Nutrition" style="checkbox" class="align-checkbox-input" />
+                           <obs conceptId="1379" id="nutrition_opt" answerConceptId="1380" answerLabel="Nutrition" style="checkbox" class="align-checkbox-input" /> 
                            <obs conceptId="1379" id="physical_activity_opt" answerConceptId="159364" answerLabel="Physical Activity" style="checkbox" class="align-checkbox-input" />
                            <obs conceptId="1379" answerConceptId="5490" answerLabel="Psychosocial" style="checkbox" class="align-checkbox-input"/>
                            <obs id="education" conceptId="1379" answerConceptId="5622" answerLabel="Other" style="checkbox" class="align-checkbox-input"/>
@@ -2347,6 +2344,7 @@
                             <span id="nutrition_opt_msg" class="required"></span>
                             <span id="physical_activity_opt_msg" class="required"></span>
                            </div>
+
                         </td>
                      </tr>
                      <tr>
