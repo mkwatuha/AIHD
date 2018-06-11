@@ -44,6 +44,7 @@ public class CommonMetadataBundle extends AbstractMetadataBundle {
         install(EncounterTypes.ADMISSION_ENCOUNTER_TYPE);
         install(EncounterTypes.FOOT_CLINIC_ENCOUNTER_TYPE);
 
+
         //installing programs metadata
         log.info("Installing Programs");
 
