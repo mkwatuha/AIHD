@@ -120,10 +120,11 @@
             font-size: 15px;
             padding-left:10px;
         }
-        .showinline  {
-            
+        .flagRed  {
+            color: red;
+            font-weight: bold;
+            font-size: 15px;
         }
-
 
 
          
@@ -159,6 +160,7 @@
                 }
                 else {
                     display = hipWaist.toFixed(2);
+                    flagWaistRatio(display);
                 }
             }            
             jq('#hip_waist_ratio').html(display);
@@ -324,14 +326,19 @@
             var systolic = getValue('systolic1.value');
             var diastolic = getValue('diastolic1.value');
             removeFlags('first_reading_bp')
+            if(systolic &gt;0 &amp;&amp; diastolic &gt;0  ){
             bpFlag(diastolic,systolic,'first_reading_bp');
+            }
         }
+        
 
         function checkSecondBpReading(){
             removeFlags('second_reading_bp')
             var systolic = getValue('systolic2.value');
             var diastolic = getValue('diastolic2.value');
-            bpFlag(diastolic,systolic,'second_reading_bp');
+            if(systolic &gt;0 &amp;&amp; diastolic &gt;0  ){
+               bpFlag(diastolic,systolic,'second_reading_bp');
+            }
         }
 
         function removeFlags(display){
@@ -489,6 +496,8 @@
             if(val == 165088){
                 jq('#dm_diagnosis_year :input').prop('disabled', false);
              }
+                checkFirstBpReading();
+                checkSecondBpReading();
         }
         function occupationStatus(){
             var val= getValue('occupation.value');
@@ -881,6 +890,25 @@
                 {name:'physical_activity_opt',message:'Physical activity counselling/education is required', location:'page3'}
                  
          ];
+        }
+
+        function flagWaistRatio(waistRatio) {
+           
+            var gender= "<lookup expression="patient.gender"/>";
+            var maxMaleRatio = 0.9;
+            var maxFemaleRatio = 0.85;      
+                
+            jq('#hip_waist_ratio').last().removeClass("flagRed");
+              
+            if(gender=='M' &amp;&amp; waistRatio &gt; maxMaleRatio){
+            jq('#hip_waist_ratio').last().addClass("flagRed");
+            return;        
+            }
+
+            if(gender=='F' &amp;&amp; waistRatio &gt; maxFemaleRatio){
+            jq('#hip_waist_ratio').last().addClass("flagRed");
+            return;        
+            }
         }
 
         jQuery(function() {
