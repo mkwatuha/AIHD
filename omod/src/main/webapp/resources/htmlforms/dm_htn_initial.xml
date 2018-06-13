@@ -121,11 +121,10 @@
             padding-left:10px;
         }
         .flagRed  {
-            color: red;
+            color: blue;
             font-weight: bold;
             font-size: 15px;
         }
-
         .sub-title  {
             color: white;
             font-weight: bold;
@@ -146,7 +145,6 @@
             overflow: auto;
             padding: 5px;
         }
-
 
         
 
