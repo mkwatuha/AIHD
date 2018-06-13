@@ -121,14 +121,34 @@
             padding-left:10px;
         }
         .flagRed  {
-            color: red;
+            color: blue;
             font-weight: bold;
             font-size: 15px;
         }
+        .sub-title  {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            background-color:#007fff;
+            width: 100%;
+            display: block;
+            overflow: auto;
+            padding: 5px;
+        }
+        .sub-title-1  {
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            background-color:#00b4ef;
+            width: 100%;
+            display: block;
+            overflow: auto;
+            padding: 5px;
+        }
 
-
-         
         
+
+ 
             </style>
     <script type="text/javascript">
        var checkedRequired =false;
@@ -1809,7 +1829,7 @@
                   <tbody>
                      <tr>
                         <td >
-                           <span class="investigation">Blood Work:</span>
+                           <span class="sub-title">Blood Work:</span>
                            <table>
                               <tbody>
                                  <tr>
@@ -1844,8 +1864,8 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                    <td colspan="3">
-                                       <label>4. UECs</label>
+                                    <td colspan="3" >
+                                       <span class="sub-title-1">4. UECs</span>
                                     </td>
                                  </tr>
                                  <tr>
@@ -1857,7 +1877,7 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                    <td colspan="3">
+                                    <td colspan="3" > 
                                        <label>ii. Electrolytes</label>
                                     </td>
                                  </tr>
@@ -1895,7 +1915,7 @@
                                  </tr>
                                  <tr>
                                     <td colspan="3">
-                                       <label>5. Lipid Profile</label>
+                                       <span  class="sub-title-1">5. Lipid Profile</span>
                                     </td>
                                  </tr>
                                  <tr>
@@ -1932,7 +1952,7 @@
                                  </tr>
                                  <tr>
                                     <td colspan="3">
-                                       <label>6. LFT</label>
+                                       <span class="sub-title-1">6. LFT</span>
                                     </td>
                                  </tr>
                                  <tr>
@@ -1981,7 +2001,7 @@
                      </tr>
                      <tr>
                         <td>
-                           <span class="investigation">Urinalysis:</span>
+                          <span class="sub-title">Urinalysis:</span>
                            <table>
                               <tbody>
                                  <tr>
@@ -2042,7 +2062,7 @@
                      </tr>
                      <tr>
                         <td>
-                           <span class="investigation">Radiological:</span>
+                           <span class="sub-title" >Radiological:</span>
                            <table>
                               <tbody>
                                  <tr>
@@ -2075,10 +2095,17 @@
                      </tr>
                      <tr>
                         <td>
-                           <label>PDT</label>
-                        </td>
-                        <td>
-                           <obs id="pdt" conceptId="165144" commentFieldLabel="&lt;/td&gt;&lt;td&gt;" />
+                         <label>PDT</label>
+                        <table>                           
+                            <tr>
+                                <th>Date</th><th>Comment</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <obs id="pdt" conceptId="165144" commentFieldLabel="&lt;/td&gt;&lt;td&gt;" />
+                                </td>
+                            </tr>
+                        </table>
                         </td>
                      </tr>
                   </tbody>
