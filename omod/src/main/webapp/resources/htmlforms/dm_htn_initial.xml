@@ -690,6 +690,7 @@
         function disableGDMFormMale(){
              var gender= "<lookup expression="patient.gender"/>"; 
             if(gender=='M'){
+            jq('#pdt_desc :input').prop('disabled', true);            
             jq('#pdt :input').prop('disabled', true);            
             }
               
@@ -2134,11 +2135,15 @@
                          <label>PDT</label>
                         <table>                           
                             <tr>
-                                <th>Date</th><th>Comment</th>
+                                <th style="background:  #00b4ef;">Commrent</th>
+                                <th style="background:  #00b4ef;">Date</th>
                             </tr>
                             <tr>
                                 <td>
-                                    <obs id="pdt" conceptId="165144" commentFieldLabel="&lt;/td&gt;&lt;td&gt;" />
+                                    <obs id="pdt_desc" conceptId="2717cc0f-cd1a-4302-9b19-a7b89825400a"  />
+                                </td>
+                                <td>
+                                    <obs id="pdt" conceptId="165144" />
                                 </td>
                             </tr>
                         </table>
