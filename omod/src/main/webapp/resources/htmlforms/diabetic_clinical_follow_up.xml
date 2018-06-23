@@ -665,6 +665,7 @@
              displayRecentDiabeticStatus();
              displayRecentHTNStatus();
              disableGDMFormMale();
+             initializeProviderName();
 
                          // medication flags
             var categories = medCategory();
@@ -728,7 +729,28 @@
              return hasBoth;
 
         }
+        function initializeProviderName(){
+            
+            var userLoc;
+            var server = getServerPath();   
+            if(server){
+                url_content('/'+server + "/ws/rest/v1/appui/session").success(function(data){ 
+                userLoc = data?data.currentProvider.person:null;  
+                setValue('clinician_name.value',userLoc.display);     
+                });
+                return userLoc;
+            }
+            
+        }
 
+        function url_content(url){
+            return jq.get(url);
+        }
+
+        function getServerPath(){
+        var pathname = window.location.pathname;
+        return pathname?pathname.split('/')[1]:null; 
+        }
 
         beforeSubmit.push(function() {
 
@@ -1999,7 +2021,8 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="2">Clinician Name:<obs conceptId="1473"/></td>
+                        <td colspan="2">Clinician Name:<obs conceptId="1473" id="clinician_name"/></td>
+                        
                     </tr>
                 </tbody>
             </table> 

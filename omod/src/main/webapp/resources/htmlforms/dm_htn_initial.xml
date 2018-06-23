@@ -911,7 +911,6 @@
                 {name:'occupation',message:'Occupation is required', location:'page1'}, 
                 {name:'education_level',message:'Education Level is required', location:'page1'}, 
                 {name:'diabetes_status',message:'Diabetes Status is required', location:'page1'}, 
-<<<<<<< 0336500c82734dca39053eca89b7483ef85fe9eb
                 {name:'diabetes_runs_in_family',message:'Diabetes runs in the family is required', location:'page1'}, 
                 {name:'htn_status',message:'Hypertension status is required', location:'page1'}, 
                 {name:'hypertension_runs_in_family',message:'Hypertension runs in the family question is required', location:'page1'}, 
@@ -921,25 +920,12 @@
                 {name:'do_you_exercise',message:'Do you exercise question is required', location:'page1'}, 
                 {name:'follow_a_balanced_diet',message:'Do you follow a balanced diet question  is required', location:'page1'}, 
                 {name:'smoke_cigarettes',message:'Do you smoke cigarettes question is required', location:'page1'}, 
-=======
-                {name:'diabetes_runs_in_family',message:'Diabetes runs in family is required', location:'page1'}, 
-                {name:'htn_status',message:'Hypertension status is required', location:'page1'}, 
-                {name:'hypertension_runs_in_family',message:'Hypertension runs in family is required', location:'page1'}, 
-                {name:'hiv_status',message:'HIV Status is required', location:'page1'}, 
-                {name:'nhif',message:'Nhif status is required', location:'page1'}, 
-                {name:'referal',message:'Patint referral status is required', location:'page1'}, 
-                {name:'do_you_exercise',message:'Do you exercise question is required', location:'page1'}, 
-                {name:'follow_a_balanced_diet',message:'Do you follow a balanced question diet is required', location:'page1'}, 
-                {name:'smoke_cigarettes',message:'Do you smoke cigarettes question is required', location:'page1'}, 
-                {name:'follow_a_balanced_diet',message:'Do you follow a balanced diet question is required', location:'page1'}, 
->>>>>>> Adding more validations
                 {name:'drink_alcohol',message:'Do you drink alcohol question is required', location:'page1'},
                 {name:'nutrition_opt',message:'Nutrition counselling/education is required', location:'page3'},
                 {name:'physical_activity_opt',message:'Physical activity counselling/education is required', location:'page3'}
                  
          ];
         }
-<<<<<<< 0336500c82734dca39053eca89b7483ef85fe9eb
 
         function flagWaistRatio(waistRatio) {
            
@@ -969,8 +955,6 @@
         }
         return false;
        }
-=======
->>>>>>> Adding more validations
 
         jQuery(function() {
             jq('#other_chief_complaint_text :input').prop('disabled', true);
@@ -1070,6 +1054,7 @@
        jq('#urea').change(function(){
         flagInputByRange('urea',2.70 ,8.0);
        });
+            initializeProviderName();
             // medication flags
             var categories = medCategory();
             listenTOItemChanges(categories.notAllowed[0].listA,flagNotAllowed);
@@ -1130,6 +1115,29 @@
              return hasBoth;
 
         } 
+        
+        function initializeProviderName(){
+            
+            var userLoc;
+            var server = getServerPath();   
+            if(server){
+                url_content('/'+server + "/ws/rest/v1/appui/session").success(function(data){ 
+                userLoc = data?data.currentProvider.person:null;  
+                setValue('clinician_name.value',userLoc.display);     
+                });
+                return userLoc;
+            }
+            
+        }
+
+        function url_content(url){
+            return jq.get(url);
+        }
+
+        function getServerPath(){
+        var pathname = window.location.pathname;
+        return pathname?pathname.split('/')[1]:null; 
+        }
 
         beforeSubmit.push(function() {
             // check unfilled required fields and prevent submission
@@ -2293,11 +2301,8 @@
                   <tbody>
                      <tr>
                         <td> 
-                           <obs conceptId="1379" id="nutrition_opt" answerConceptId="1380" answerLabel="Nutrition" style="checkbox" class="align-checkbox-input" /> 
-
+                           <obs conceptId="1379" id="nutrition_opt" answerConceptId="1380" answerLabel="Nutrition" style="checkbox" class="align-checkbox-input" />
                            <obs conceptId="1379" id="physical_activity_opt" answerConceptId="159364" answerLabel="Physical Activity" style="checkbox" class="align-checkbox-input" />
-                           <span id="physical_activity_opt_msg" class="required"></span>
-                           </div>
                            <obs conceptId="1379" answerConceptId="5490" answerLabel="Psychosocial" style="checkbox" class="align-checkbox-input"/>
                            <obs id="education" conceptId="1379" answerConceptId="5622" answerLabel="Other" style="checkbox" class="align-checkbox-input"/>
                            <div class="educationFlags">
@@ -3091,11 +3096,12 @@
                      <tr>
                         <td>
                            Provider Name:                                        
-                           <obs conceptId="1473"/>
+                           <obs conceptId="1473" id="clinician_name"/>
                         </td>
                         <td>
                            Designation:                                        
-                           <obs conceptId="163556" answerConceptIds="164222,164223" answerLabels="Attending surgeon,Surgion Supervisor" style="dropdown" />
+                           <obs conceptId="163556" answerConceptIds="5507AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162591AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" 
+                           answerLabels="Consultant,Medical officer,Clinical Officer,Nurse" style="dropdown" />
                         </td>
                      </tr>
                   </tbody>
