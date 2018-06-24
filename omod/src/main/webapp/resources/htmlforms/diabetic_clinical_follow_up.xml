@@ -770,7 +770,6 @@
    <div style="display: none">
       <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
    </div>
-   <div id="displayRequiredFields"></div>
    <div id="tab-wrap">
       <div id="tabs">
          <ul>
@@ -2036,6 +2035,7 @@
             </div>
         </div>
         </ifMode>
+        <div id="displayRequiredFields"></div>
       </div>
     </div> 
   </div>   

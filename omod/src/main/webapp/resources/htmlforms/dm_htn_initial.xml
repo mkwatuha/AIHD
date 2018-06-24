@@ -543,12 +543,8 @@
             var val= getValue('hiv_status.value');
                jq('#enrolled_to_hiv_care :input').prop('disabled', true);
                jq('#tb_comments :input').prop('disabled', true);
-               jq('#tb_treatment_start :input').prop('disabled', true);
-               jq('#on_tb_treatment :input').prop('disabled', true);
             if(val == 138571){
                 jq('#tb_comments :input').prop('disabled', false);
-                jq('#tb_treatment_start :input').prop('disabled', false);
-                jq('#on_tb_treatment :input').prop('disabled', false);
                 jq('#enrolled_to_hiv_care :input').prop('disabled', false);
              }
         }
@@ -1166,7 +1162,7 @@
    <div style="display:none">
       <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
    </div>
-   <div id="displayRequiredFields"></div>
+   
    <div id="tab-wrap">
       <div id="tabs">
          <ul>
@@ -2281,6 +2277,20 @@
                         <tr>
                            <td>7</td>
                            <td>
+                              <obs conceptId="6042" answerConceptId="159298AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Visual Impairment" style="checkbox" class="align-checkbox-input"/>
+                           </td>
+                           <td>
+                              <obs conceptId="159948"/>
+                           </td>
+                           <td>
+                              <obs conceptId="165127" answerConceptIds="6097,0766f882-4ca8-4c75-89ca-52e01a16b045" answerLabels="Resolved,Referral" style="radio" class="align-radio-input" showCommentField="true" commentFieldLabel="&lt;/td&gt;&lt;td&gt;" answerSeparator=""/>
+                           </td>
+                        </tr>
+                     </obsgroup>
+                     <obsgroup groupingConceptId="165124">
+                        <tr>
+                           <td>7</td>
+                           <td>
                               <obs conceptId="6042" answerConceptId="5622" answerLabel="Other" style="checkbox" class="align-checkbox-input"/>
                            </td>
                            <td>
@@ -3119,6 +3129,7 @@
                      </div>
                   </div>
                </ifMode>
+               <div id="displayRequiredFields"></div>
             </div>
          </div>
       </div>
