@@ -1180,8 +1180,8 @@
                         <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                      </td>
                      <td colspan="2">
-                        <label>Care giver:</label>
-                        <encounterProvider default="currentUser" />
+                        <!-- <label>Care giver:</label>
+                        <encounterProvider default="currentUser" /> -->
                      </td>
                   </tr>
                   <tr>
@@ -1484,7 +1484,7 @@
                            <obs conceptId="1282" answerConceptId="79651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Metformin" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="500,1000" answerLabels="500 mg,1000 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>
@@ -1494,7 +1494,7 @@
                            <obs conceptId="1282" id="Glibenclamide" answerConceptId="77071AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Glibenclamide" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="2.5,5" answerLabels="2.5 mg,5 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>
                      </tr>
                   </obsgroup>
@@ -1504,7 +1504,7 @@
                            <obs conceptId="1282" answerConceptId="159459AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Insulin 70/30 " style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>
                      </tr>
                   </obsgroup>
@@ -1514,7 +1514,7 @@
                            <obs conceptId="1282" answerConceptId="e4f96288-5a75-4259-a610-fa380d469f1f" answerLabel="NPH Type 1" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>
@@ -1524,7 +1524,7 @@
                            <obs conceptId="1282" answerConceptId="ee5647b4-3ebf-48ae-9428-2558118de260" answerLabel="NPH Type 2" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                       
                      </tr>
                   </obsgroup>
@@ -1534,7 +1534,7 @@
                            <obs conceptId="1282" id="soluble_insulin" answerConceptId="282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Soluble Insulin" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>
                      </tr>
                   </obsgroup>
@@ -1544,7 +1544,7 @@
                            <obs conceptId="1282" answerConceptId="75633" id="Enalapril" answerLabel="Enalapril" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="1020,20" answerLabels="10-20 mg,20 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>
@@ -1554,7 +1554,7 @@
                            <obs conceptId="1282" answerConceptId="77696AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="HydrochlorothiazideHCTZ" answerLabel="Hydrochlorothia zide (HCTZ)" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="12.5,25" answerLabels="12.5 mg,25 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                       
                      </tr>
                   </obsgroup>
@@ -1564,7 +1564,7 @@
                            <obs conceptId="1282" answerConceptId="79074AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="Losartan" answerLabel="Losartan" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="50,100" answerLabels="50 mg,100 mg" style="dropdown"/>
+                          <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>
@@ -1574,7 +1574,7 @@
                            <obs conceptId="1282" answerConceptId="80637AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="Nifedipine" answerLabel="Nifedipine" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="20,30,60" answerLabels="Retard tabs:20 mg,LA tabs: 30 mg,LA tabs: 60 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>
@@ -1584,7 +1584,7 @@
                            <obs conceptId="1282" answerConceptId="71652AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="Atenolol" answerLabel="Atenolol" style="checkbox" class="align-checkbox-input"/>
                         </td>
                         <td>
-                           <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="25,100" answerLabels="25 mg,100 mg" style="dropdown"/>
+                           <obs conceptId="1e2a1995-9460-4208-88d7-5bf0097b06c2"/>
                         </td>                        
                      </tr>
                   </obsgroup>

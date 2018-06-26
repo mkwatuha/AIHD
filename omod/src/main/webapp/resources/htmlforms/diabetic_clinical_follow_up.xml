@@ -666,6 +666,7 @@
              displayRecentHTNStatus();
              disableGDMFormMale();
              initializeProviderName();
+             fillTreatmentSupportDetails();
 
                          // medication flags
             var categories = medCategory();
@@ -752,6 +753,19 @@
         return pathname?pathname.split('/')[1]:null; 
         }
 
+        function fillTreatmentSupportDetails(){
+
+        var supporter_name ="<lookup expression="personAttributes.get('Treatment Supporter Name')"/>";
+        var supporter_phone_number ="<lookup expression="personAttributes.get('Treatment Supporter Phone Number')"/>";
+        var supporter_other_phone_number ="<lookup expression="personAttributes.get('Other Treatment Supporter Phone Number')"/>";
+        var supporter_alternative_phone_number ="<lookup expression="personAttributes.get('Alternative Treatment Supporter Phone Number')"/>";
+
+        setValue('supporter_name.value',supporter_name);   
+        setValue('supporter_phone_number.value',supporter_phone_number);   
+        setValue('supporter_other_phone_number.value',supporter_other_phone_number);   
+        setValue('supporter_alternative_phone_number.value',supporter_alternative_phone_number);   
+        }
+
         beforeSubmit.push(function() {
 
          // check medication combination and prevent submission
@@ -788,8 +802,8 @@
                         <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                      </td>
                      <td colspan="2">
-                        <label>Provider:</label>
-                        <encounterProvider default="currentUser" />
+                        <!-- <label>Provider:</label>
+                        <encounterProvider default="currentUser" /> -->
                      </td>
                   </tr>
                </tbody>
@@ -802,19 +816,19 @@
                      </td>
                      <td>
                         Treatment supporter's name:
-                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                        <obs conceptId="160638AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="supporter_name" />
                      </td>
-                     <td>
+                     <td> 
                         Treatment Supporter's Cell phone Number:
-                        <obs conceptId="160642AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                        <obs conceptId="160642AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  id="supporter_phone_number" />
                      </td>
                      <td>
                         Treatment Supporter's alternative cell phone Number:
-                        <obs conceptId="3cd268ad-f27a-42de-a998-c836ec7dd430" />
+                        <obs conceptId="3cd268ad-f27a-42de-a998-c836ec7dd430" id="supporter_alternative_phone_number" />
                      </td>
                      <td>
                         Treatment Supporter's other cell phone Number:
-                        <obs conceptId="732034aa-65a8-4a9a-82cb-d58f615c2ba3" />
+                        <obs conceptId="732034aa-65a8-4a9a-82cb-d58f615c2ba3" id="supporter_other_phone_number" />
                      </td>
                   </tr>
                </tbody>
@@ -2017,6 +2031,20 @@
                </tbody>
             </table>
 
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                           <obs conceptId="165122" answerConceptId="165132" answerLabel="Continue Care in clinic" style="checkbox" class="align-checkbox-input" />
+                        </td>
+                        <td>
+                           Return date:                                        
+                           <obs conceptId="5096" allowFutureDates="true" />
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table> 
             <table>
                 <tbody>
                     <tr>
