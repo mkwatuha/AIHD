@@ -658,12 +658,19 @@
              jq('#nhif').change(onNHIFStatusChange);
              jq('#wcirc').change(onHipOrWaistCircChange);  
              jq('#hip_circ').change(onHipOrWaistCircChange); 
+
             getField('weight.value').change(onWeightOrHeightChange);
             getField('height.value').change(onWeightOrHeightChange);            
             onWeightOrHeightChange();
             displayRecentBmi();            
              displayRecentDiabeticStatus();
              displayRecentHTNStatus();
+
+            // disable based on age
+            var maxAge_60 =720;
+            disableByAgeChange(maxAge_60,'Glibenclamide');
+            disableByAgeChange(maxAge_60,'Glibenclamide_dose'); 
+            disableByAgeChange(maxAge_60,'Glibenclamide_frequency');
              disableGDMFormMale();
              initializeProviderName();
              fillTreatmentSupportDetails();
@@ -764,6 +771,16 @@
         setValue('supporter_phone_number.value',supporter_phone_number);   
         setValue('supporter_other_phone_number.value',supporter_other_phone_number);   
         setValue('supporter_alternative_phone_number.value',supporter_alternative_phone_number);   
+        }
+
+        function disableByAgeChange(maxAge,fieldId){      
+     
+            var age = "<lookup expression="fn.patientAgeInMonths()"/>" ;                 
+             
+            jq('#'+ fieldId +' :input').prop('disabled', false);
+            if(age &gt; maxAge){
+              jq('#'+ fieldId + ' :input').prop('disabled', true);  
+             }
         }
 
         beforeSubmit.push(function() {
@@ -1842,13 +1859,13 @@
                               <obsgroup groupingConceptId="4f6f6640-4350-4d36-b946-69a5f79c3c46">
                                  <tr>
                                     <td>
-                                       <obs conceptId="1282" id="disableover60" answerConceptId="77071AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Glibenclamide" style="checkbox" class="align-checkbox-input"/>
+                                       <obs conceptId="1282" id="Glibenclamide" answerConceptId="77071AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Glibenclamide" style="checkbox" class="align-checkbox-input"/>
                                     </td>
                                     <td>
-                                       <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answers="5" answerLabels="5 mg" style="dropdown"/>
+                                       <obs conceptId="1443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="Glibenclamide_dose" answers="5" answerLabels="5 mg" style="dropdown"/>
                                     </td>
                                     <td>
-                                       <obs conceptId="160855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="160862AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160858AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="OD,BD,TDS" style="dropdown" />
+                                       <obs conceptId="160855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" id="Glibenclamide_frequency" answerConceptIds="160862AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160858AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160866AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="OD,BD,TDS" style="dropdown" />
                                     </td>
                                  </tr>
                               </obsgroup>
