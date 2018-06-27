@@ -683,6 +683,13 @@
             if(val == 1065){
                 jq('#impairment :input').prop('disabled', false);
              }
+        }   
+        function onTbTreatment(){
+            var val= getValue('on_tb_treatment.value');
+            jq('#tb_treatment_start :input').prop('disabled', true);
+            if(val == 1662){
+                jq('#tb_treatment_start :input').prop('disabled', false);
+             }
         }
   
         function otherGeneralExam(){
@@ -967,6 +974,7 @@
             onWeightOrHeightChange();
             jq('#nhif').change(onNHIFStatusChange);
             jq('#visual_impairment').change(visualImpairment);
+            jq('#on_tb_treatment').change(onTbTreatment);
             jq('#other_general_exam').change(otherGeneralExam);            
             jq('#temperature').focusout(onTemperatureChange);
             jq('#pr_in').focusout(prByAgeChange);
@@ -1319,7 +1327,7 @@
                            <obs required="true" conceptId="1917" answerConceptIds="1065,1066,5622" answerLabels="Yes,No,Other" style="radio" answerSeparator="" id="nhif" class="align-radio-input"/>
                            <span id="nhif_msg"></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="3">
                            <label>Other:</label>
                            <span id="other_nhif">
                               <obs conceptId="cd2b38b5-ce2f-45fd-ba14-b5db1b68b81f" />
@@ -1327,7 +1335,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <td colspan="3" id="enroll_to_nhif">
+                        <td colspan="4" id="enroll_to_nhif">
                            <span id="nhif-comment" class="value"></span>
                         </td>
                      </tr>

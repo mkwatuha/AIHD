@@ -660,7 +660,8 @@
              jq('#hip_circ').change(onHipOrWaistCircChange); 
 
             getField('weight.value').change(onWeightOrHeightChange);
-            getField('height.value').change(onWeightOrHeightChange);            
+            getField('height.value').change(onWeightOrHeightChange); 
+            jq('#on_tb_treatment').change(onTbTreatment);           
             onWeightOrHeightChange();
             displayRecentBmi();            
              displayRecentDiabeticStatus();
@@ -780,6 +781,14 @@
             jq('#'+ fieldId +' :input').prop('disabled', false);
             if(age &gt; maxAge){
               jq('#'+ fieldId + ' :input').prop('disabled', true);  
+             }
+        }
+
+        function onTbTreatment(){
+            var val= getValue('on_tb_treatment.value');
+            jq('#tb_treatment_start :input').prop('disabled', true);
+            if(val == 1662){
+                jq('#tb_treatment_start :input').prop('disabled', false);
              }
         }
 
@@ -904,7 +913,7 @@
                         <obs conceptId="1917" answerConceptIds="1065,1066" answerLabels="Yes,No" style="radio" class="align-radio-input"
                            answerSeparator="" id="nhif"/>
                      </td>
-                     <td colspan="2" id="enroll_to_nhif">
+                     <td colspan="3" id="enroll_to_nhif">
                         <span id="nhif-comment" class="value"></span>                  
                      </td>
                   </tr>
@@ -920,8 +929,31 @@
                         <obs conceptId="138405" answerConceptIds="664,138571,1067" answerLabels="HIV -ve,HIV +ve,Unknown" style="radio" class="align-radio-input"
                            answerSeparator="" id="hiv_status"/>
                      </td>
-                     <td></td>
+                     <td></td> 
+                     <td></td> 
                   </tr>
+                  <tr>
+                        <td>
+                           <label>Screened for TB:</label>
+                           <obs id="screened_for_tb" conceptId="164800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"     answerConceptIds="1065,1066,1175" answerLabels="Yes,No,NA" style="radio" answerSeparator="" class="align-radio-input"/>
+                        </td>
+                        <td>
+                           <label>TB Status:</label>
+                           <obs id="on_tb_treatment" conceptId="1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptId="1662AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="On treatment" style="checkbox" class="align-checkbox-input"/>
+                        </td>
+                        <td>
+                           <label>Treatment start date.</label>
+                           <span id="tb_treatment_start">
+                              <obs  conceptId="cda0abc2-bf7d-4959-b619-bbfd1eb21517" />
+                           </span>
+                        </td>
+                        <td colspan="2">
+                           <label> Comment (details):</label>
+                           <span id="tb_comments">
+                              <obs  conceptId="b1d41c4d-d939-4818-9990-e2d9c5fefffe"/>
+                           </span>
+                        </td>
+                     </tr>
                </tbody>
             </table>
          </div>
