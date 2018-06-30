@@ -67,4 +67,20 @@ public class EncounterTypes {
             return "e22e39fd-7db2-45e7-80f1-60fa0d5a4378";
         }
     };
+
+    public static EncounterTypeDescriptor FOOT_CLINIC_ENCOUNTER_TYPE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Foot clinic";
+        }
+
+        @Override
+        public String description() {
+            return "Patient foot examination and care";
+        }
+
+        public String uuid() {
+            return "3b1f9415-8e00-46b7-b52b-f6c5075d6e30";
+        }
+    };
 }
